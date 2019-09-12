@@ -1,0 +1,18 @@
+dubbo:
+  #配置服务名称
+  application:
+    name: boot_dubbo_user_service_provider
+
+  #注册到注册中心
+  registry:
+    protocol: zookeeper
+    address: 172.18.32.16:12181,172.18.32.21:12181,172.18.32.25:12181
+
+  #指定协议名称和端口号
+  protocol:
+    name: dubbo
+    port: 20880
+
+  #连接监控中心  registry代表从注册中心获取监控中心地址
+  monitor:
+    protocol: registry

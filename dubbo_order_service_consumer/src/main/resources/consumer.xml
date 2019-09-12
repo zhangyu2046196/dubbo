@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+    <!-- 打开自动扫描 -->
+    <context:component-scan base-package="com.youyuan.gmall.order.service.impl"></context:component-scan>
+
+    <!-- 消费者配置信息 -->
+
+    <!-- 1、指定消费者名称 -->
+    <dubbo:application name="dubbo_order_service_consumer"></dubbo:application>
+    <!-- 2、指定注册中心地址 -->
+    <dubbo:registry protocol="zookeeper" address="172.18.32.16:12181,172.18.32.21:12181,172.18.32.25:12181"></dubbo:registry>
+    <!-- 3、指定远程调用接口，dubbo会生成远程代理接口 -->
+    <dubbo:reference id="userService" interface="com.youyuan.gmall.service.UserService"></dubbo:reference><!-- 连接监控中心 -->
+    <dubbo:monitor protocol="registry"></dubbo:monitor><!--表示从注册中心发现监控中心地址  -->
+    <!--<dubbo:monitor address="127.0.0.1:7070"></dubbo:monitor>--><!--  直连的方式连接监控中心，默认7070是监控中心的通信端口，可以修改监控中心配置文件dubbo.properties修改-->
+
+
+
+</beans>

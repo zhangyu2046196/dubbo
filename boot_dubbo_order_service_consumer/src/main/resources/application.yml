@@ -1,0 +1,21 @@
+#设置web服务的端口号,因为监控中心默认端口号是8080,所以此处用8081
+server:
+  port: 8081
+
+
+dubbo:
+  #设置服务名称
+  application:
+    name: boot_dubbo_order_service_consumer
+  #设置注册中心地址
+  registry:
+    protocol: zookeeper
+    address: 172.18.32.16:12181,172.18.32.21:12181,172.18.32.25:12181
+  #连接监控中心
+  monitor:
+    protocol: registry
+
+  #启动时检查,如果消费者依赖的的服务提供者接口还没有注册到注册中心,消费者启动时异常  true代表检查 false代表不检查
+  consumer:
+    check: true
+
