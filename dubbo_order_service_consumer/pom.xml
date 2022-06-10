@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.6.2</version>
+            <version>2.6.12</version>
         </dependency>
         <!--  由于注册中心是zookeeper实现的,索引要引入zookeeper客户端包 -->
         <dependency>
